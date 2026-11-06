@@ -7,10 +7,10 @@
     <style>
         :root {
             --bg-dark: #070b19;
-            --panel-bg: rgba(15, 23, 42, 0.75);
+            --panel-bg: rgba(15, 23, 42, 0.85);
             --accent-blue: #00f0ff;
             --accent-purple: #7000ff;
-            --header-bg: rgba(0, 43, 73, 0.9);
+            --header-bg: rgba(0, 43, 73, 0.95);
             --header-accent: #cba052;
             --danger-red: #ff2a5f;
             --text-light: #f1f5f9;
@@ -35,20 +35,20 @@
             position: relative;
         }
 
-        /* Ambient Glow */
         body::before {
             content: '';
-            position: absolute;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 20%, rgba(112, 0, 255, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 80%, rgba(0, 240, 255, 0.12) 0%, transparent 40%);
+                radial-gradient(circle at 20% 20%, rgba(112, 0, 255, 0.25) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 240, 255, 0.2) 0%, transparent 50%);
             z-index: 0;
             pointer-events: none;
         }
 
-        /* Top Header Banner */
         header {
             position: fixed;
             top: 0;
@@ -109,7 +109,6 @@
             box-shadow: 0 0 8px #10b981;
         }
 
-        /* Main Form Container */
         .container {
             position: relative;
             z-index: 1;
@@ -122,11 +121,10 @@
         .portal-card {
             background: var(--panel-bg);
             backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 240, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 240, 255, 0.1);
             border-radius: 16px;
             padding: 32px;
-            transition: transform 0.3s ease;
         }
 
         .card-header {
@@ -138,9 +136,7 @@
             font-size: 1.4rem;
             font-weight: 700;
             margin-bottom: 6px;
-            background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #ffffff;
         }
 
         .card-header p {
@@ -164,8 +160,8 @@
 
         select, input {
             width: 100%;
-            background: rgba(15, 23, 42, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: #0f172a;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             color: #fff;
             padding: 12px 14px;
             border-radius: 8px;
@@ -188,4 +184,60 @@
             border-radius: 8px;
             font-size: 1rem;
             font-weight: 700;
-            cursor
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(112, 0, 255, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .btn-decrypt:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(112, 0, 255, 0.5);
+        }
+
+        .security-notice {
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 6px;
+            border-left: 3px solid var(--header-accent);
+            font-size: 0.72rem;
+            color: #94a3b8;
+            line-height: 1.4;
+        }
+
+        .stage-container {
+            display: none;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 20px 0 10px 0;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            transition: width 0.1s linear;
+        }
+
+        .status-text {
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--accent-blue);
+            text-align: center;
+        }
+
+        .alarm-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height:
